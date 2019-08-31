@@ -104,7 +104,24 @@ for(var i=0; i<length; i++){
     - for문 안에서 length 사용시 루프돌때마다 계산을 해야하기 때문에 속도가 많이 걸린다.
     
 
+#### 2.2.3 문자열로 배열 생성하기
+- 문자열의 split() 함수를 호출하면 배열이 생성된다.
+- split() 함수는 문자열을 특정 구분자로 분리한 다음 분리된 문자열을 포함하는 배열을 만든다. 
 
+```javascript
+var sentence = 'javascript html css';
+var words = sentence.split(' ');
+var length = words.length;
+for(var i=0; i<length; i++){
+    print(`${i}번째 단어 = words${i}`);
+}
+// 출력결과
+/*
+* 0번째 단어 = javascript
+* 1번째 단어 = html
+* 2번째 단어 = css
+* */
+```
 
 
 
