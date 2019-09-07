@@ -224,6 +224,24 @@ if(position > 0){
 }
 
 ``` 
+#### 2.3.2 배열을 문자열로 표현하기
+- join()
+    - 배열을 문자열 형식으로 반환하는 함수
+    - 배열의 요소를 인자로 받은 구분자로 구분하는 문자열을 반환한다.
+    
+```javascript
+var names = ['뭉덕이', '오리', '준영'];
+var nameStr = names.join();
+print(nameStr);
+```  
+- toString
+    - 배열을 문자열 형식으로 반환하는 함수
+    - print() 함수의 인자로 배열의 이름을 제공하면 자동으로 배열의 toString()함수가 호출된다.
+```javascript
+var names = ['뭉덕이', '오리', '준영'];
+print(names); //뭉덕이, 오리, 준영
+
+```  
  
 
 
