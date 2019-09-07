@@ -272,7 +272,26 @@ print(splicedArr);//정곰, 흑곰, 혜지몽
 #### 2.4 변형자 함수
 - 개별적으로 요소를 건드리지 않고  배열 전체 내용을 고치는 변형자 함수(Mutator Function)을 제공한다.
 
+#### 2.4.1 배열에 요소 추가하기
+- push()
+    - 배열의 끝에 요소를 추가한다. 
+    - length property를 이용해 배열을 확장하는 것 보다 push()함수를 사용하는것이 더 직관적이다.
+```javascript
+var nums = [1,2,3,4,5];
+print(nums);
+nums.push(6);
+print(nums); //1,2,3,4,5,6
+```   
+- unshift()
+    - 베열의 맨 앞에 요소를 추가한다. 
  
+ ```javascript
+ var nums = [2,3,4,5];
+ print(nums);
+ nums.unshift(1);
+ print(nums); //1,2,3,4,5
+ ```   
+  
 
 
 
