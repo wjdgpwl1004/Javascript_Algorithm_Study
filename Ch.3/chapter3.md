@@ -41,7 +41,31 @@
 | currPos(함수) | 리스트의 현재 위치 반환 |
 | moveTo(함수) | 현재 위치를 지정한 위치로 이동 |
 
-
+#### 3.2 List 클래스 구현
+- 앞서 정의한 ADT를 활용해 List 클래스를 구현한다.
+- 생성자 함수를 우선 구현한다.
+```javascript
+function List(){
+    this.listSize = 0;
+    this.length = 0;
+    this.pos = 0;
+    this.dataStore = []; // 리스트 요소를 저장할 빈 배열 초기화
+    this.clear = clear;
+    this.find = find;
+    this.toString = toString;
+    this.insert = insert;
+    this.append = append;
+    this.remove = remove;
+    this.front = front;
+    this.end = end;
+    this.prev = prev;
+    this.next = next;
+    this.currPos = currPos;
+    this.moveTo = moveTo;
+    this.getElement = getElement;
+    this.contains = contains;
+}
+```
 
 
 
