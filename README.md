@@ -42,3 +42,6 @@
         
 #### Chapter3
 - 리스트
+    - List ADT
+    - List 클래스 구현
+        - Append 함수 구현
