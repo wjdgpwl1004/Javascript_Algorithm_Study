@@ -47,7 +47,6 @@
 ```javascript
 function List(){
     this.listSize = 0;
-    this.length = 0;
     this.pos = 0;
     this.dataStore = []; // 리스트 요소를 저장할 빈 배열 초기화
     this.clear = clear;
@@ -64,6 +63,7 @@ function List(){
     this.moveTo = moveTo;
     this.getElement = getElement;
     this.contains = contains;
+     this.length = length;
 }
 ```
 
@@ -118,7 +118,13 @@ function remove(element){
     return false;
 }
 ```
-
+##### 3.2.4 Length: 리스트의 요소 개수
+- length() 함수는 리스트의 요소 개수를  반환한다.
+```javascript
+function length(){
+    return this.listSize;
+}
+```
 
 
 
