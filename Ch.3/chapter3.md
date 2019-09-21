@@ -126,10 +126,42 @@ function length(){
 }
 ```
 
+##### 3.2.5 toString: 리스트의 요소 확인
+- toString()
+    - 리스트의 요소를 확인하는 함수이다.
+    - 함수는 문자열이 아닌 배열 객체를 반환한다.
+    - 하지만 배열을 반환하므로 현재 요소의 상태를 알 수 있다.
+    
+```javascript
+function toStirng(){
+    return this.dataSource;
+}
+```
 
+##### 중간점검
+- 현재까지 구현한 List 클래스가 잘 동작하는지 중간점검을 진행한다.
 
+```javascript
+//given
+var names = new List();
+names.append("괴도");
+names.append("뭉덕");
+names.append("라이코스");
+names.append("오리");
+names.append("곰");
 
+print(names.toString());
+names.remove("곰");
+print(names.toString());
 
+/*
+* 출력 결과
+* 괴도,뭉덕, 라이코스, 오리, 곰
+* 괴도, 정곰, 라이코스, 오리
+* 
+* */
+
+```
 
 
 
