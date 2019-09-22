@@ -197,7 +197,21 @@ function clear(){
 }
 ```
 
-
+##### 3.2.8 Contains: 리스트에 특정값이 있는지 판단
+- contains()
+    - 어떤 값이 리스트에 포함되어 있는지 확인할때 사용하는 함수이다.
+    
+```javascript
+function contains(element){
+    var length = this.dataSource.length;
+    for(var i=0; i<length; i++){
+        if(this.dataSource[i]===element){
+            return true;
+        }
+    }
+    return false;
+}
+```
 
 
 
