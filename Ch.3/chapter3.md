@@ -175,7 +175,7 @@ print(names.toString());
 function insert(element, after){
     var insertPos = this.find(after);
     if(insertPos > -1){
-        this.dataSource.spice(insertPos + 1, 0, element);
+        this.dataSource.splice(insertPos + 1, 0, element);
         this.listSize++;
         return true;
     }
@@ -428,11 +428,128 @@ displayList(movieList);
 
 ```
 
+#### 3.5 연습문제
+- 1. 현재 리스트의 모든 요소보다 클 때만 요소를 삽입하는 함수를 구현
+```javascript
+function append(list, element){
+    var isBiggest = true;
+    for(list.front(); list.currPos()<list.length(); list.next()){
+        if(!list.getElement()<element){
+            isBiggest = false;
+            break;
+        }
+    }
+    if(isBiggest){
+        list.append(element);
+    }
+    return isBiggest;
+}
+
+```
+- 2. 현재 리스트의 모든 요소보다 작을 때만 요소를 삽입하는 함수 구현
+```javascript
+function append(list, element){
+    var isBiggest = true;
+    for(list.front(); list.currPos()<list.length(); list.next()){
+        if(list.getElement()<=element){
+            isBiggest = false;
+            break;
+        }
+    }
+    if(isBiggest){
+        list.append(element);
+    }
+    return isBiggest;
+}
+
+```
+- 3. 사람의 이름과 성별을 저장하는 Person 클래스를 구현, 최소10개의 Person객체를 포함하는 리스트 생성
+    - 리스트에서 같은 성별을 가진  사람을 모두 출력하는 함수를 구현
+    
+```javascript
+function Person(name, isMan){
+    this.name=name;
+    this.isMan = isMan;
+}
+
+var persons = new List();
+persons.append(new Person('정곰1', false));
+persons.append(new Person('정곰2', false));
+persons.append(new Person('정곰3', false));
+persons.append(new Person('정곰4', false));
+persons.append(new Person('정곰5', false));
+persons.append(new Person('정곰6', true));
+persons.append(new Person('정곰7', true));
+persons.append(new Person('정곰8', true));
+persons.append(new Person('정곰9', true));
+persons.append(new Person('정곰10', true));
+
+function showSameGenderPersons(list, isMan){
+    for(list.front(); list.currPos()<list.length(); list.next()){
+        if(isMan===list.getElement()['isMan']){
+            print(`이름=${list.getElement()['name']}, 성별 = ${list.getElement()['isMan']?'남자':'여자'}`);
+        }
+    }
+}
+
+```
+- 4. 비디오 대여 상점 프로그램에서 고객이 대여한 영화를 대여된 영화 리스트로 추가, 고객이 영화를 대여할 때마다 대여된 영화 리스트를 출력
 
 
+```javascript
+var checkOutList = new List();
+function checkOut(name, movie, movieList, customerList, checkOutList){
+    if(movieList.contains(movie)){
+        var customer = new Customer();
+        customerList.append(customer);
+        checkOutList.append(movie);
+        movieList.remove(movie);
+        displayList(checkOutList);
+    }else{
+        print(`movie는 빌릴 수 없는 영화입니다.`);
+    }
+}
+```
+- 5. 비디오 대여 상점 프로그램에 반납함수 추가, 고객이 영화를 반납하면 대여된 영화리스트에서 영화를 삭제한 다음 이용할 수 있는 영화 리스트로 추가
+```javascript
+function find(element){
+    var length = this.dataSource.length;
+    for(var i =0; i<length; i++){
+        if(this.dataSource[i] instanceof Customer){
+            if(this.datsSource[i].name===element){
+                return i;
+            }
+        }else{
+            if(this.dataSource[i]===element){
+                return i;
+            }
+        }
+    }
+    return -1;
+}
 
-
-
+function returnVideo(name, movie, movieList, customerList, checkOutList){
+    const index = customerList.find(customer => name === customer.name);
+    if(index === -1){
+        return print(`${name}은 존재하는 고객이 아닙니다.`);
+    }
+    customerList.moveTo(index);
+    const customer = customerList.getElement();
+    if(checkOutList.contains(movie)&&customer.movie === movie){//체크아웃 목록에 존재하고, 고객이 대여한 것이 맞을 경우
+        //영화 반납
+        movieList.append(movie);
+        //대여 리스트에서 삭제
+        checkOutList.remove(movie);
+        // Customer에서 null로
+        customer.movie = null;
+        
+        //영화목록출력
+        displayList(movieList);
+    }else{
+        print(`${movie}는 대여한 영화가 아닙니다.`);
+    }
+}
+```
 
 
 

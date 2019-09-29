@@ -73,7 +73,7 @@ function toStirng(){
 function insert(element, after){
     var insertPos = this.find(after);
     if(insertPos > -1){
-        this.dataSource.spice(insertPos + 1, 0, element);
+        this.dataSource.splice(insertPos + 1, 0, element);
         this.listSize++;
         return true;
     }
@@ -179,10 +179,10 @@ var rentalRecords = new List();
 
 
 /*1.현재 도서 목록 출력*/
-displayList(bookList);
+bookList.showBookList = displayList(bookList);
 
 /*2.고객목록출력*/
-displayList(customers);
+customers.showCustomerList = displayList(customers);
 
 /* 대여기록 출력 */
 displayList(rentalRecords);
