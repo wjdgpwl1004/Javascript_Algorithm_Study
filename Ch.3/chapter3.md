@@ -86,9 +86,9 @@ function append(element){
 ** 삭제할 요소를 찾는 헬퍼함수 find() **
 ```javascript
     function find(element){
-        var length = this.dataSource.length;
+        var length = this.dataStore.length;
         for(var i=0; i<length; i++){
-            if(this.dataSource[i]===element){
+            if(this.dataStore[i]===element){
                 return i;
             }
         }
@@ -111,7 +111,7 @@ function append(element){
 function remove(element){
     var index = this.find(element);
     if(index>-1){
-        this.dataSource.splice(index, 1);
+        this.dataStore.splice(index, 1);
         this.listSize--;
         return true;
     }
@@ -175,7 +175,7 @@ print(names.toString());
 function insert(element, after){
     var insertPos = this.find(after);
     if(insertPos > -1){
-        this.dataSource.splice(insertPos + 1, 0, element);
+        this.dataStore.splice(insertPos + 1, 0, element);
         this.listSize++;
         return true;
     }
@@ -191,8 +191,8 @@ function insert(element, after){
         
 ```javascript
 function clear(){
-    delete this.dataSource;
-    this.dataSource.length = 0;
+    delete this.dataStore;
+    this.dataStore.length = 0;
     this.listSize = this.pos=0;
 }
 ```
@@ -203,9 +203,9 @@ function clear(){
     
 ```javascript
 function contains(element){
-    var length = this.dataSource.length;
+    var length = this.dataStore.length;
     for(var i=0; i<length; i++){
-        if(this.dataSource[i]===element){
+        if(this.dataStore[i]===element){
             return true;
         }
     }
@@ -258,7 +258,7 @@ function moveTo(position){
 }
 
 function getElement(){
-    return this.dataSource[this.pos];
+    return this.dataStore[this.pos];
 }
 ```
 ```javascript
@@ -513,14 +513,14 @@ function checkOut(name, movie, movieList, customerList, checkOutList){
 - 5. 비디오 대여 상점 프로그램에 반납함수 추가, 고객이 영화를 반납하면 대여된 영화리스트에서 영화를 삭제한 다음 이용할 수 있는 영화 리스트로 추가
 ```javascript
 function find(element){
-    var length = this.dataSource.length;
+    var length = this.dataStore.length;
     for(var i =0; i<length; i++){
-        if(this.dataSource[i] instanceof Customer){
-            if(this.datsSource[i].name===element){
+        if(this.dataStore[i] instanceof Customer){
+            if(this.dataStore[i].name===element){
                 return i;
             }
         }else{
-            if(this.dataSource[i]===element){
+            if(this.dataStore[i]===element){
                 return i;
             }
         }
