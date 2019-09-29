@@ -21,3 +21,117 @@
 - length 프로퍼티는 스텍에 포함된 요소의 수를 저장한다.
 - 스텍에 요소가 있는지 여부를 알려주는 프로퍼티도 존재한다.
 
+#### 4.2 스텍 구현
+- 스텍의 내부요소를 저장할 자료구조는 배열을 사용한다.
+
+Stack 클래스의생성자 함수
+- dataStore는 스텍의 요소를 저장하는 배열이다.
+- top은 스텍의 탑 정보를 유지하며 생성자에서는 top을 0으로 초기화 한다.
+```javascript
+function Stack(){
+    this.dataStore = [];
+    this.top = 0;
+    this.push = push;
+    this.pop = pop;
+    this.peek = peek;
+    this.clear = clear;
+    this.length = length;
+}
+```
+
+Push()
+- 새 요소를 스텍에 추가하는 함수이다.
+- 탑 위치에 요소를 저장한 다음 빈 배열에서 빈 공간을 새로운 탑이 가르키도록 top변수를 증가시킨다.
+
+```javascript
+function push(element){
+    this.dataStore[this.top++] = element;
+}
+```
+Pop()
+- Push()의 반대동작
+- TOP의 요소를 반환하고 TOP변수를 감소시킨다.
+```javascript
+function pop(){
+    return this.dataStore[--this.top];
+}
+```
+Peek()
+- 배열의 top -1 위치에 있는 요소에 접근하여 스텍의 TOP요소를 반환한다.
+```javascript
+function peek(){
+    return this.dataStore[this.top -1];
+}
+```
+length()
+- 스텍에 얼마나 많은 데이터가 저장되어 있는지 요소의 개수를 반환한다.
+```javascript
+function length(){
+    return this.top;
+}
+```
+clear()
+-top변수를 0으로 초기화하여스텍 전체 요소를 삭제한다.
+```javascript
+function clear(){
+    this.top = 0;
+}
+
+```
+
+Stack 클래스의 전체 코드
+
+```javascript
+function Stack(){
+    this.dataStore = [];
+    this.top = 0;
+    this.push = push;
+    this.pop = pop;
+    this.peek = peek;
+    this.clear = clear;
+    this.length = length;
+}
+
+function push(element){
+    this.dataStore[this.top++] = element;
+}
+function pop(){
+    return this.dataStore[--this.top];
+}
+function peek(){
+    return this.dataStore[this.top -1];
+}
+function length(){
+    return this.top;
+}
+function clear(){
+    this.top = 0;
+}
+```
+
+Stack 클래스의 구현을 테스트하는 프로그램
+```javascript
+var stack = new Stack();
+stack.push('준영');
+stack.push('뭉덕');
+stack.push('오구');
+stack.push('마이펫');
+stack.push('멍뭉덕');
+stack.push('멍뭉이');
+
+print(`저장된 요소의 수 = ${stack.length()}`);
+print(`현재 top요소 = ${stack.peek()}`);
+var popped = stack.pop();
+print(`pop으로 꺼낸 요소 = ${popped}`);
+print(`현재 top 요소 = ${stack.peek()}`);
+stack.clear();
+print(`저장된 요소의 수 = ${stack.length()}`);
+
+```
+
+
+
+
+
+
+
